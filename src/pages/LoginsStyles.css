@@ -1,0 +1,63 @@
+/* LoginsStyles.css */
+/* 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+     /* Remove default margin */
+} */
+
+.form {
+    background-color: rgb(218, 214, 214);
+    border-radius: 35px;
+    padding: 30px;
+    width: 90%; /* Adjusted width for responsiveness */
+    max-width: 900px; /* Ensure the form doesn’t exceed this width */
+    height: auto; /* Adjust height to auto for better responsiveness */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button.submit {
+    background: linear-gradient(to right, #4CAF50, #00BFFF); /* Light green to light blue gradient */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 50px;
+    transition: background 0.3s ease;
+}
+
+button.submit:hover {
+    background: linear-gradient(to right, #45a049, #1e90ff); /* Darker gradient on hover */
+}
+
+.span {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.span a {
+    color: #007bff;
+}
+
+.input-span {
+    margin-bottom: 20px;
+}

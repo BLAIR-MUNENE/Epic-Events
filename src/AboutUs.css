@@ -1,0 +1,10 @@
+.aboutus {
+  margin-top: 10vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column; /* Align children from top to bottom */
+  height: 40vh;
+}
+.aboutus-text {
+  text-size: 50px;
+}

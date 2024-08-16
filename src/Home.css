@@ -1,0 +1,32 @@
+.Page-Navigation {
+  background-color: rgb(2, 2, 32);
+  height: 100px;
+}
+.home-banner {
+  background-color: rgb(2, 2, 32);
+  align-items: center;
+  display: flex;
+  flex-direction: column; /* Align children from top to bottom */
+  height: 50vh;
+}
+.home-banner h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: italic;
+
+  font-size: "60px"; /* Adjusts the font size */
+  color: #ffffff4d; /* Changes the text color */
+}
+.home-banner p {
+  align-items: center;
+  /* margin-top: 40px; */
+
+  font-size: 50px; /* Adjusts the font size */
+  color: #ffffff; /* Changes the text color */
+}
+.home-banner h2 {
+  font-family: ;
+  margin-bottom: 10vh;
+  font-size: 40px; /* Adjusts the font size */
+  color: #3f14a1; /* Changes the text color */
+}
