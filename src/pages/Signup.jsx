@@ -7,7 +7,6 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [role, setRole] = useState('user');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const navigate = useNavigate();
@@ -25,7 +24,7 @@ const Signup = () => {
             email,
             password1: password,
             password2: confirmPassword,
-            role
+            role: 'user'  // Default role is set to 'user'
         };
 
         try {
@@ -50,83 +49,142 @@ const Signup = () => {
     };
 
     return (
-        <div>
-            <div className="form">
-                <h2>Sign Up</h2>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+            backgroundColor: '#f8f9fa'
+        }}>
+            <div style={{
+                maxWidth: '400px',
+                width: '100%',
+                padding: '20px',
+                backgroundColor: 'white',
+                borderRadius: '8px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ marginBottom: '20px', fontFamily: 'Arial, sans-serif', color: '#007bff' }}>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="name-fields">
-                        <div className="input-span">
-                            <label htmlFor="Username" className="label">Username</label>
-                            <input
-                                type="text"
-                                id="Username"
-                                name="Username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </div>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="username" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ced4da',
+                                boxSizing: 'border-box'
+                            }}
+                        />
                     </div>
-                    <div className="input-span">
-                        <label htmlFor="email" className="label">Email</label>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="email" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Email</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ced4da',
+                                boxSizing: 'border-box'
+                            }}
                         />
                     </div>
-                    <div className="input-span">
-                        <label htmlFor="password" className="label">Create Password</label>
-                        <div className="password-container">
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="password" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Create Password</label>
+                        <div style={{ position: 'relative' }}>
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                style={{
+                                    width: '100%',
+                                    padding: '10px',
+                                    borderRadius: '4px',
+                                    border: '1px solid #ced4da',
+                                    boxSizing: 'border-box'
+                                }}
                             />
                             <span
-                                className="toggle-password"
+                                style={{
+                                    position: 'absolute',
+                                    right: '10px',
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    cursor: 'pointer'
+                                }}
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
                             </span>
                         </div>
                     </div>
-                    <div className="input-span">
-                        <label htmlFor="confirmPassword" className="label">Confirm Password</label>
-                        <div className="password-container">
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="confirmPassword" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Confirm Password</label>
+                        <div style={{ position: 'relative' }}>
                             <input
                                 type={showConfirmPassword ? 'text' : 'password'}
                                 id="confirmPassword"
                                 name="confirmPassword"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
+                                style={{
+                                    width: '100%',
+                                    padding: '10px',
+                                    borderRadius: '4px',
+                                    border: '1px solid #ced4da',
+                                    boxSizing: 'border-box'
+                                }}
                             />
                             <span
-                                className="toggle-password"
+                                style={{
+                                    position: 'absolute',
+                                    right: '10px',
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    cursor: 'pointer'
+                                }}
                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                             >
                                 <i className={showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
                             </span>
                         </div>
                     </div>
-                    <div className="input-span">
-                        <label htmlFor="role" className="label">Role</label>
-                        <select
-                            id="role"
-                            name="role"
-                            value={role}
-                            onChange={(e) => setRole(e.target.value)}
-                        >
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-                    <button className="submit" type="submit">Create Account</button>
-                    <div className="span">
-                        Already have an account? <Link to="/login">Log in</Link>
+                    <button
+                        type="submit"
+                        style={{
+                            width: '100%',
+                            padding: '10px',
+                            border: 'none',
+                            borderRadius: '4px',
+                            background: 'linear-gradient(to right, #4CAF50, #00BFFF)',
+                            color: 'white',
+                            fontSize: '16px',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s, transform 0.3s',
+                            transform: 'scale(1)',
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    >
+                        Create Account
+                    </button>
+                    <div style={{ marginTop: '15px' }}>
+                        Already have an account? <Link to="/login" style={{ color: '#007bff' }}>Log in</Link>
                     </div>
                 </form>
             </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LoginsStyles.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -54,47 +53,103 @@ const Login = () => {
     };
 
     return (
-        <div className="form">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="input-span">
-                    <label htmlFor="username" className="label">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className="input-span">
-                    <label htmlFor="email" className="label">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="input-span">
-                    <label htmlFor="password" className="label">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit" className="submit">Login</button>
-                {error && <div className="error-message">{error}</div>}
-                {successMessage && <div className="success-message">{successMessage}</div>}
-                <div className="span">
-                    Don't have an account? <a href="/signup">Sign Up</a>
-                </div>
-            </form>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+            backgroundColor: '#f8f9fa'
+        }}>
+            <div style={{
+                maxWidth: '400px',
+                width: '100%',
+                padding: '20px',
+                backgroundColor: 'white',
+                borderRadius: '8px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ marginBottom: '20px', fontFamily: 'Arial, sans-serif', color: '#007bff' }}>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="username" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ced4da',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="email" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ced4da',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
+                    <div style={{ marginBottom: '15px' }}>
+                        <label htmlFor="password" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ced4da',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        style={{
+                            width: '100%',
+                            padding: '10px',
+                            border: 'none',
+                            borderRadius: '4px',
+                            background: 'linear-gradient(to right, #4CAF50, #00BFFF)',
+                            color: 'white',
+                            fontSize: '16px',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s, transform 0.3s',
+                            transform: 'scale(1)',
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    >
+                        Login
+                    </button>
+                    {error && <div style={{ marginTop: '15px', color: 'red' }}>{error}</div>}
+                    {successMessage && <div style={{ marginTop: '15px', color: 'green' }}>{successMessage}</div>}
+                    <div style={{ marginTop: '15px' }}>
+                        Don't have an account? <a href="/signup" style={{ color: '#007bff' }}>Sign Up</a>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
