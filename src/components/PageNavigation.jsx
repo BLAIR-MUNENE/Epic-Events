@@ -21,11 +21,12 @@ function PageNavigation() {
         <Container>
           <Nav className="me-auto">
             <Navbar.Brand href="/">Home</Navbar.Brand>
-            {/* Show only if the user is logged in */}
-            {token && (
+            {/* Conditionally render links based on authentication status */}
+            {!token ? (
+              <Nav.Link href="/about-us">About Us</Nav.Link>
+            ) : (
               <>
                 <Nav.Link href="/events">Events</Nav.Link>
-                <Nav.Link href="/about-us">About Us</Nav.Link>
               </>
             )}
           </Nav>
@@ -39,7 +40,6 @@ function PageNavigation() {
             {token ? (
               <>
                 <Dropdown.Item onClick={() => handleRedirect('/PersonalInfoPage')}>Personal Info</Dropdown.Item>
-                {/* Removed Participated Events, My Events, and Host Events links */}
                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
               </>
             ) : (
