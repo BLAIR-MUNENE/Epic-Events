@@ -6,10 +6,10 @@ import Col from "react-bootstrap/Col";
 import PageNavigation from "../components/PageNavigation";
 import Card from "react-bootstrap/Card";
 import { BASE_URL } from "./utils";
-import "./MyEvents.css"; // Ensure this file includes the updated CSS
 
 function MyEvents() {
   const [events, setEvents] = useState([]);
+  const [loadingEventId, setLoadingEventId] = useState(null); // State for loading effect
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,24 +33,26 @@ function MyEvents() {
   }, []);
 
   const handleBuyClick = (event) => {
-    navigate("/purchased-event", { state: { event } });
+    setLoadingEventId(event.id); // Set loading for the clicked event
+    setTimeout(() => {
+      navigate("/purchased-event", { state: { event } });
+      setLoadingEventId(null); // Reset loading state after navigation
+    }, 1000); // Simulate a delay for the loading effect
   };
 
   return (
     <>
       <PageNavigation />
-      <p>
-        <h1
-          style={{
-            textAlign: "center",
-            fontFamily: "Arial Black",
-            marginTop: "3.5vh",
-            color: "brown",
-          }}
-        >
-          THE HOTTEST EVENTS
-        </h1>
-      </p>
+      <h1
+        style={{
+          textAlign: "center",
+          fontFamily: "Arial Black",
+          marginTop: "3.5vh",
+          color: "brown",
+        }}
+      >
+        THE HOTTEST EVENTS
+      </h1>
 
       <Container>
         <Row>
@@ -61,7 +63,7 @@ function MyEvents() {
                   width: "280px",
                   marginTop: "10px",
                   objectFit: "cover",
-                  position: "relative", // Ensure positioning for button
+                  position: "relative",
                 }}
               >
                 <Card.Img
@@ -75,34 +77,56 @@ function MyEvents() {
                       <em>{event.name}</em>
                     </p>
                   </Card.Title>
-
                   <Card.Text>
                     <i className="bi bi-calendar3">{event.datetime}</i>
                   </Card.Text>
                   <Card.Text>
                     <i className="bi bi-geo-alt"> {event.location}</i>
                   </Card.Text>
-
-                  {/* Display the price if available */}
                   {event.price && (
                     <Card.Text>
                       <strong>Price: KES {event.price}</strong>
                     </Card.Text>
                   )}
-
-                  {/* Add the Buy Tickets button here */}
-                  <div className="button">
-                    <a
-                      id="buy"
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault(); // Prevent default anchor behavior
-                        handleBuyClick(event);
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <button
+                      onClick={() => handleBuyClick(event)}
+                      disabled={loadingEventId === event.id}
+                      style={{
+                        backgroundColor: "#007bff",
+                        border: "none",
+                        color: "white",
+                        padding: "10px 20px",
+                        fontSize: "16px",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s, transform 0.3s",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      Buy Tickets
-                    </a>
-                    <div id="btn_back"></div>
+                      {loadingEventId === event.id ? (
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                          style={{
+                            width: "1.5rem",
+                            height: "1.5rem",
+                            borderWidth: "0.2em",
+                          }}
+                        ></span>
+                      ) : (
+                        "Buy Tickets"
+                      )}
+                    </button>
                   </div>
                 </Card.Body>
               </Card>
