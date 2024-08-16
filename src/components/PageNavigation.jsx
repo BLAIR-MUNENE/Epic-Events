@@ -21,8 +21,13 @@ function PageNavigation() {
         <Container>
           <Nav className="me-auto">
             <Navbar.Brand href="/">Home</Navbar.Brand>
-            <Nav.Link href="/events">Events</Nav.Link>
-            <Nav.Link href="/about-us">About Us</Nav.Link>
+            {/* Show only if the user is logged in */}
+            {token && (
+              <>
+                <Nav.Link href="/events">Events</Nav.Link>
+                <Nav.Link href="/about-us">About Us</Nav.Link>
+              </>
+            )}
           </Nav>
 
           <DropdownButton
@@ -34,10 +39,7 @@ function PageNavigation() {
             {token ? (
               <>
                 <Dropdown.Item onClick={() => handleRedirect('/PersonalInfoPage')}>Personal Info</Dropdown.Item>
-                {/* Removed the following lines to exclude these options */}
-                {/* <Dropdown.Item onClick={() => handleRedirect('/ParticipatedEvents')}>Participated Events</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleRedirect('/MyEvents')}>My Events</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleRedirect('/HostEvents')}>Host Events</Dropdown.Item> */}
+                {/* Removed Participated Events, My Events, and Host Events links */}
                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
               </>
             ) : (
