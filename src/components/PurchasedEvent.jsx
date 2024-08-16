@@ -17,7 +17,7 @@ function PurchasedEvent() {
 
   const handleBuyNow = () => {
     // Redirect to the external URL
-    window.location.href = "https://desolate-ridge-69417-63835eb682ea.herokuapp.com/";
+    window.location.href = "https://obscure-river-18723-73b74f1b3ff5.herokuapp.com/";
   };
 
   return (
