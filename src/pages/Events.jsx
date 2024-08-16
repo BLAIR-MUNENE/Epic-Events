@@ -110,6 +110,52 @@ function MyEvents() {
           ))}
         </Row>
       </Container>
+
+      <footer
+        style={{
+          backgroundColor: "#343a40",
+          color: "white",
+          padding: "20px",
+          marginTop: "40px",
+        }}
+      >
+        <Container>
+          <Row>
+            <Col md={4}>
+              <h5>Contact Us</h5>
+              <p>
+                Email: Epicevents@gmail.com
+                <br />
+                Phone: +254748288593
+                <br />
+                Address: 123 Main St, City, Country
+              </p>
+            </Col>
+            <Col md={4}>
+              <h5>Quick Links</h5>
+              <ul className="list-unstyled">
+                <li><a href="/" style={{ color: "white" }}>Home</a></li>
+                <li><a href="/events" style={{ color: "white" }}>Events</a></li>
+                <li><a href="/about-us" style={{ color: "white" }}>About Us</a></li>
+                <li><a href="/contact" style={{ color: "white" }}>Contact</a></li>
+              </ul>
+            </Col>
+            <Col md={4}>
+              <h5>Follow Us</h5>
+              <a href="#" className="text-white me-2"><i className="bi bi-facebook"></i></a>
+              <a href="#" className="text-white me-2"><i className="bi bi-twitter"></i></a>
+              <a href="#" className="text-white me-2"><i className="bi bi-instagram"></i></a>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center mt-3">
+              <p style={{ fontSize: "smaller" }}>
+                &copy; 2024 Epicevents. All rights reserved.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </>
   );
 }

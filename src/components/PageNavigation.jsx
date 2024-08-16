@@ -34,9 +34,10 @@ function PageNavigation() {
             {token ? (
               <>
                 <Dropdown.Item onClick={() => handleRedirect('/PersonalInfoPage')}>Personal Info</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleRedirect('/ParticipatedEvents')}>Participated Events</Dropdown.Item>
+                {/* Removed the following lines to exclude these options */}
+                {/* <Dropdown.Item onClick={() => handleRedirect('/ParticipatedEvents')}>Participated Events</Dropdown.Item>
                 <Dropdown.Item onClick={() => handleRedirect('/MyEvents')}>My Events</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleRedirect('/HostEvents')}>Host Events</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleRedirect('/HostEvents')}>Host Events</Dropdown.Item> */}
                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
               </>
             ) : (
