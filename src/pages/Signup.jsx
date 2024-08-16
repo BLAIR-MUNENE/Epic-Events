@@ -7,7 +7,9 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [role, setRole] = useState('user'); // Default role is 'user'
+    const [role, setRole] = useState('user');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -21,8 +23,8 @@ const Signup = () => {
         const userData = {
             username,
             email,
-            password1: password, // Change field names to match the backend
-            password2: confirmPassword, // Change field names to match the backend
+            password1: password,
+            password2: confirmPassword,
             role
         };
 
@@ -37,7 +39,7 @@ const Signup = () => {
 
             if (response.ok) {
                 alert('Account created successfully!');
-                navigate('/login'); // Redirect to login page
+                navigate('/login');
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.message || 'An error occurred'}`);
@@ -76,23 +78,39 @@ const Signup = () => {
                     </div>
                     <div className="input-span">
                         <label htmlFor="password" className="label">Create Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="password-container">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <span
+                                className="toggle-password"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+                            </span>
+                        </div>
                     </div>
                     <div className="input-span">
                         <label htmlFor="confirmPassword" className="label">Confirm Password</label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            name="confirmPassword"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
+                        <div className="password-container">
+                            <input
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                            <span
+                                className="toggle-password"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            >
+                                <i className={showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+                            </span>
+                        </div>
                     </div>
                     <div className="input-span">
                         <label htmlFor="role" className="label">Role</label>
