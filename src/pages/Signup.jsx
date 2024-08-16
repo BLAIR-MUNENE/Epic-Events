@@ -7,6 +7,7 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [role, setRole] = useState('user'); // Default role is 'user'
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -20,11 +21,13 @@ const Signup = () => {
         const userData = {
             username,
             email,
-            password
+            password1: password, // Change field names to match the backend
+            password2: confirmPassword, // Change field names to match the backend
+            role
         };
 
         try {
-            const response = await fetch('https://epic-event-backend.onrender.com/auth/users', {
+            const response = await fetch('https://epic-event-backend.onrender.com/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,7 +37,7 @@ const Signup = () => {
 
             if (response.ok) {
                 alert('Account created successfully!');
-                navigate('/events');
+                navigate('/login'); // Redirect to login page
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.message || 'An error occurred'}`);
@@ -91,6 +94,18 @@ const Signup = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     </div>
+                    <div className="input-span">
+                        <label htmlFor="role" className="label">Role</label>
+                        <select
+                            id="role"
+                            name="role"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                        >
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
                     <button className="submit" type="submit">Create Account</button>
                     <div className="span">
                         Already have an account? <Link to="/login">Log in</Link>
@@ -102,4 +117,3 @@ const Signup = () => {
 }
 
 export default Signup;
-
