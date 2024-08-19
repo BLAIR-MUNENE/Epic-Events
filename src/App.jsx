@@ -28,17 +28,17 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
 
           <Route 
-            path="/my_events" 
+            path="/events" 
             element={<ProtectedRoute><MyEvents /></ProtectedRoute>} 
           />
           
           <Route 
-            path="/profile/*" 
+            path="/profile/" 
             element={<ProtectedRoute><ProfileDashboard /></ProtectedRoute>} 
           />
           
           <Route 
-            path="/profile/personal-info" 
+            path="/PersonalInfoPage" 
             element={<ProtectedRoute><PersonalInfoPage /></ProtectedRoute>} 
           />
           
